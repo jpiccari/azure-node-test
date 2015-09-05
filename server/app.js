@@ -8,12 +8,12 @@ var routers = [ 'api', 'recall', 'page' ];
 
 
 app.set('port', process.env.PORT || 3000);
-// app.set('root', process.env.ROOT_DIR || process.cwd());
+app.set('root', process.env.ROOT_DIR || path.resolve(__dirname, '..'));
 app.set('x-powered-by', false);
-
+console.log(app.get('root'));
 
 // Static asset routes under /* (js, css, img, etc)
-app.use(express.static(app.get('root') + '/build', {
+app.use(express.static(path.join(app.get('root'), 'build'), {
 	dotfiles: 'deny',
 	index: false
 }));
