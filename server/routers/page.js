@@ -140,11 +140,11 @@ module.exports = function(app) {
 	// 	console.log('Registering route [' + route + ']');
 	// });
 
-	var files = fs.readdirSync(modelsDirectory);
+	// var files = fs.readdirSync(modelsDirectory);
 
 	router.all('*', function(req, res) {
 		// TODO 404 page
-		res.send('Oops! Wah wah, no page found. Redirecting to something more slightly useful <meta http-equiv="refresh" content="3;url=/">');
+		res.send([rootDirectory, modelsDirectory, process.cwd(), __dirname].join('\n'));
 	});
 
 	// Set route
