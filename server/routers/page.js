@@ -8,6 +8,7 @@ var environment = require('../environment');
 
 var model = {};
 
+
 Handlebars.registerHelper('chunk', function(context, options) {
 	if (Handlebars.Utils.isFunction(context)) {
 		context = context.call(this);
@@ -27,7 +28,7 @@ Handlebars.registerHelper('chunk', function(context, options) {
 
 
 function walkDirectorySync(filepath, callback) {
-	var stats = fs.statSync(filepath);
+	var stats = getStats(filepath);
 	var basename = path.basename(filepath);
 
 	// Skip files and directories that start with .
@@ -42,6 +43,14 @@ function walkDirectorySync(filepath, callback) {
 	}
 }
 
+
+function getStats(filepath) {
+	try {
+		return fs.statSync(filepath);
+	} catch (e) {
+		return false;
+	}
+}
 
 function getFileContents(filepath) {
 	return fs.readFileSync(filepath).toString();
@@ -104,7 +113,7 @@ module.exports = function(app) {
 	var viewsDirectory = path.join(rootDirectory, 'views');
 
 	// Walk file system looking for models
-	// walkDirectorySync(modelsDirectory, loadModel);
+	walkDirectorySync(modelsDirectory, loadModel);
 
 	// Walk the file system looking for views and create routes for them
 	walkDirectorySync(viewsDirectory, function(filepath) {
