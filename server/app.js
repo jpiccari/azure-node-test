@@ -19,8 +19,12 @@ console.log(app.get('root'));
 // }));
 
 
-routers.forEach(function(router) {
-	require('./routers/' + router)(app);
+// routers.forEach(function(router) {
+// 	require('./routers/' + router)(app);
+// });
+
+app.all('*', function(req, res) {
+	res.send('Woot');
 });
 
 
