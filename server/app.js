@@ -13,10 +13,10 @@ app.set('x-powered-by', false);
 console.log(app.get('root'));
 
 // Static asset routes under /* (js, css, img, etc)
-app.use(express.static(path.join(app.get('root'), 'build'), {
-	dotfiles: 'deny',
-	index: false
-}));
+// app.use(express.static(path.join(app.get('root'), 'build'), {
+// 	dotfiles: 'deny',
+// 	index: false
+// }));
 
 
 routers.forEach(function(router) {
