@@ -140,7 +140,7 @@ module.exports = function(app) {
 	// 	console.log('Registering route [' + route + ']');
 	// });
 
-	// var files = fs.readdirSync(modelsDirectory);
+	var files = fs.readdirSync(modelsDirectory);
 
 	router.all('*', function(req, res) {
 		// TODO 404 page
