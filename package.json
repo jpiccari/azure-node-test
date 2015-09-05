@@ -2,14 +2,11 @@
   "name": "azure-node-test",
   "version": "1.0.0",
   "description": "",
-  "main": "./server.js",
+  "main": "./server/app.js",
   "author": "",
   "dependencies": {
     "express": "^4.13.3",
     "handlebars": "^4.0.1",
     "request": "^2.61.0"
-  },
-  "scripts": {
-    "start": "node ./server.js"
   }
 }
