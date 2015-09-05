@@ -103,10 +103,10 @@ module.exports = function(app) {
 	var modelsDirectory = path.join(rootDirectory, 'models');
 	var viewsDirectory = path.join(rootDirectory, 'views');
 
-	// // Walk file system looking for models
-	// walkDirectorySync(modelsDirectory, loadModel);
+	// Walk file system looking for models
+	walkDirectorySync(modelsDirectory, loadModel);
 
-	// // Walk the file system looking for views and create routes for them
+	// Walk the file system looking for views and create routes for them
 	// walkDirectorySync(viewsDirectory, function(filepath) {
 	// 	var extension = path.extname(filepath);
 	// 	var basename = path.basename(filepath, extension);
