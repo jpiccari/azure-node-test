@@ -103,42 +103,42 @@ module.exports = function(app) {
 	var modelsDirectory = path.join(rootDirectory, 'models');
 	var viewsDirectory = path.join(rootDirectory, 'views');
 
-	// Walk file system looking for models
-	walkDirectorySync(modelsDirectory, loadModel);
+	// // Walk file system looking for models
+	// walkDirectorySync(modelsDirectory, loadModel);
 
-	// Walk the file system looking for views and create routes for them
-	walkDirectorySync(viewsDirectory, function(filepath) {
-		var extension = path.extname(filepath);
-		var basename = path.basename(filepath, extension);
+	// // Walk the file system looking for views and create routes for them
+	// walkDirectorySync(viewsDirectory, function(filepath) {
+	// 	var extension = path.extname(filepath);
+	// 	var basename = path.basename(filepath, extension);
 
-		// Files that start with _ are partials and should not have routes
-		if (basename[0] === '_') {
-			loadPartial(filepath);
-			return;
-			/* UNREACHABLE */
-		}
+	// 	// Files that start with _ are partials and should not have routes
+	// 	if (basename[0] === '_') {
+	// 		loadPartial(filepath);
+	// 		return;
+	// 		/* UNREACHABLE */
+	// 	}
 
-		// If the basename is index then use it as the folder's route
-		if (basename === 'index') {
-			basename = '/';
-		}
+	// 	// If the basename is index then use it as the folder's route
+	// 	if (basename === 'index') {
+	// 		basename = '/';
+	// 	}
 
-		var route = url.resolve(filepath.replace(viewsDirectory, '').replace(path.sep, '/'), basename);
+	// 	var route = url.resolve(filepath.replace(viewsDirectory, '').replace(path.sep, '/'), basename);
 
-		switch (extension) {
-			case '.html':
-			case '.mustache':
-				router.all(route, mustacheHandler(filepath));
-				break;
+	// 	switch (extension) {
+	// 		case '.html':
+	// 		case '.mustache':
+	// 			router.all(route, mustacheHandler(filepath));
+	// 			break;
 
-			default:
-				// Unregistered extension, don't register route
-				return;
-				/* UNREACHABLE */
-		}
+	// 		default:
+	// 			// Unregistered extension, don't register route
+	// 			return;
+	// 			/* UNREACHABLE */
+	// 	}
 
-		console.log('Registering route [' + route + ']');
-	});
+	// 	console.log('Registering route [' + route + ']');
+	// });
 
 	router.all('*', function(req, res) {
 		// TODO 404 page
