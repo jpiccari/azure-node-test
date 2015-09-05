@@ -3,7 +3,7 @@ var path = require('path');
 var express = require('express');
 
 var app = express();
-var routers = [ 'api', 'recall', 'page' ];
+var routers = [ 'page' ];
 
 
 
@@ -19,12 +19,8 @@ app.use(express.static(path.join(app.get('root'), 'build'), {
 }));
 
 
-// routers.forEach(function(router) {
-// 	require('./routers/' + router)(app);
-// });
-
-app.all('*', function(req, res) {
-	res.send(app.get('root'));
+routers.forEach(function(router) {
+	require('./routers/' + router)(app);
 });
 
 
