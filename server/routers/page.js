@@ -144,7 +144,7 @@ module.exports = function(app) {
 
 	router.all('*', function(req, res) {
 		// TODO 404 page
-		res.send([rootDirectory, modelsDirectory, process.cwd(), __dirname].join('\n'));
+		res.send(getFileContents(path.join(rootDirectory, 'build', 'css', 'main.css'));
 	});
 
 	// Set route
