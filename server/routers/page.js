@@ -104,7 +104,7 @@ module.exports = function(app) {
 	var viewsDirectory = path.join(rootDirectory, 'views');
 
 	// Walk file system looking for models
-	walkDirectorySync(modelsDirectory, loadModel);
+	// walkDirectorySync(modelsDirectory, loadModel);
 
 	// Walk the file system looking for views and create routes for them
 	// walkDirectorySync(viewsDirectory, function(filepath) {
@@ -139,6 +139,8 @@ module.exports = function(app) {
 
 	// 	console.log('Registering route [' + route + ']');
 	// });
+
+	var files = fs.readdirSync(modelsDirectory);
 
 	router.all('*', function(req, res) {
 		// TODO 404 page
